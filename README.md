@@ -7,7 +7,7 @@ On an Arch based distribution as root, run the following:
 
 ```
 curl -LO knarkzel.xyz/larbs
-sh larbs.sh
+sh larbs
 ```
 
 That's it.
