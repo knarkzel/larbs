@@ -218,6 +218,9 @@ installationloop
 dialog --title "LARBS Installation" --infobox "Finally, installing \`libxft-bgra\` to enable color emoji in suckless software without crashes." 5 70
 yes | sudo -u "$name" $aurhelper -S libxft-bgra-git >/dev/null 2>&1
 
+# nvim thing
+pip3 install pynvim
+
 # Most important command! Get rid of the beep!
 systembeepoff
 
