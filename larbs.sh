@@ -200,6 +200,10 @@ manualinstall $aurhelper || error "Failed to install AUR helper."
 # and all build dependencies are installed.
 installationloop
 
+# Nvim
+curl -fLo "/home/$name/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 # Install the dotfiles in the user's home directory and other stuff
 rm "/home/$name/.bashrc"
 mkdir "/home/$name/downloads"
@@ -208,10 +212,6 @@ cd "/home/$name"
 git clone "$dotfilesrepo"
 cd "/home/$name/dotfiles"
 stow -S *
-
-# Nvim
-sh -c 'curl -fLo "${/home/$name/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 dialog --title "LARBS Installation" --infobox "Finally, installing \`libxft-bgra\` to enable color emoji in suckless software without crashes." 5 70
 yes | sudo -u "$name" $aurhelper -S libxft-bgra-git >/dev/null 2>&1
