@@ -5,6 +5,8 @@
 On an Arch based distribution as root, run the following:
 
 ```
-curl -LO knarkzel.xyz/larbs
-sh larbs
+git clone https://github.com/knarkzel/larbs
+cd larbs && sh larbs
 ```
+
+Switch to user then `sh larbsuser`.
