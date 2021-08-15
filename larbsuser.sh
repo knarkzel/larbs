@@ -3,7 +3,6 @@ cd ~
 rm .bashrc
 mkdir downloads
 mkdir -p source/rust
-git clone https://gitlab.com/knarkzel/dotfiles
-cd dotfiles/
-stow -S *
+git clone --bare https://gitlab.com/knarkzel/dotfiles $HOME/.dotfiles
+/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 startx
