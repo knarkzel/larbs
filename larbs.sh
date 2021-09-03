@@ -201,25 +201,20 @@ manualinstall $aurhelper || error "Failed to install AUR helper."
 installationloop
 
 ### USER PART!
-# Nvim
-# curl -fLo "/home/$name/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
-#        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# Install the dotfiles in the user's home directory and other stuff
-# rm "/home/$name/.bashrc"
-# mkdir "/home/$name/downloads"
-# mkdir "/home/$name/source"
-# cd "/home/$name"
-# git clone "$dotfilesrepo"
-# cd "/home/$name/dotfiles"
-# stow -S *
-# chown "$name" "/home/$name/**"
-
-dialog --title "LARBS Installation" --infobox "Finally, installing \`libxft-bgra\` to enable color emoji in suckless software without crashes." 5 70
-yes | sudo -u "$name" $aurhelper -S libxft-bgra-git >/dev/null 2>&1
+rm "/home/$name/.bashrc"
+rm "/home/$name/.bash_profile"
+mkdir "/home/$name/downloads"
+mkdir -p "/home/$name/source/rust"
+cd "/home/$name"
+git clone --bare https://github.com/knarkzel/dotfiles "/home/$name/.dotfiles"
+/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f
+chown -R "$name" "/home/$name/**"
 
 # nvim thing
 pip3 install pynvim
+
+dialog --title "LARBS Installation" --infobox "Finally, installing \`libxft-bgra\` to enable color emoji in suckless software without crashes." 5 70
+yes | sudo -u "$name" $aurhelper -S libxft-bgra-git >/dev/null 2>&1
 
 # Most important command! Get rid of the beep!
 systembeepoff
