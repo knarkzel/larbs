@@ -4,6 +4,6 @@ rm .bashrc
 rm .bash_profile
 mkdir downloads
 mkdir -p source/rust
-git clone --bare https://gitlab.com/knarkzel/dotfiles $HOME/.dotfiles
+git clone --bare https://github.com/knarkzel/dotfiles $HOME/.dotfiles
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f
 startx
