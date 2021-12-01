@@ -205,13 +205,7 @@ rm "/home/$name/.bashrc"
 rm "/home/$name/.bash_profile"
 mkdir "/home/$name/downloads"
 mkdir -p "/home/$name/source/rust"
-cd "/home/$name"
-git clone --bare https://github.com/knarkzel/dotfiles "/home/$name/.dotfiles"
-/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f
 chown -R "$name" "/home/$name/**"
-
-# nvim thing
-pip3 install pynvim
 
 dialog --title "LARBS Installation" --infobox "Finally, installing \`libxft-bgra\` to enable color emoji in suckless software without crashes." 5 70
 yes | sudo -u "$name" $aurhelper -S libxft-bgra-git >/dev/null 2>&1
